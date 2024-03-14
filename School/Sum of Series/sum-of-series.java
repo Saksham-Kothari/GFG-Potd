@@ -28,7 +28,13 @@ class GFG {
 class Solution {
     public static long seriesSum(int n) {
         // code 
-       return (long)n * (n+1)/2;
+      long sum = 0;
+      long i = 1;
+      while(i <= n){
+          sum += i;
+          i++;
+      }
+      return sum;
     }
 }
         
