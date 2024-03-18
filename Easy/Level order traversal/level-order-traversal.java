@@ -129,12 +129,12 @@ class Solution
     //Function to return the level order traversal of a tree.
     static ArrayList <Integer> levelOrder(Node root) {
         ArrayList<Integer>ans = new ArrayList<>();
-        ArrayDeque<Node>nque = new ArrayDeque<>();
-        nque.addLast(root);
-        while(!nque.isEmpty()){
-            Node node = nque.removeFirst();
-            if (node.left!=null) nque.add(node.left);
-            if(node.right!=null) nque.add(node.right);
+        ArrayDeque<Node>q = new ArrayDeque<>();
+        q.addLast(root);
+        while(!q.isEmpty()){
+            Node node = q.removeFirst();
+            if (node.left!=null) q.add(node.left);
+            if(node.right!=null) q.add(node.right);
             ans.add(node.data);
         }
         return ans;
