@@ -13,19 +13,20 @@ class GFG {
             int k = Integer.parseInt(br.readLine().trim());
 
             String[] line1 = br.readLine().trim().split(" ");
-            int[] arr1 = new int[line1.length];
+            int[] a = new int[line1.length];
             for (int i = 0; i < line1.length; i++) {
-                arr1[i] = Integer.parseInt(line1[i]);
+                a[i] = Integer.parseInt(line1[i]);
             }
 
             String[] line2 = br.readLine().trim().split(" ");
-            int[] arr2 = new int[line2.length];
+            int[] b = new int[line2.length];
             for (int i = 0; i < line2.length; i++) {
-                arr2[i] = Integer.parseInt(line2[i]);
+                b[i] = Integer.parseInt(line2[i]);
             }
 
             Solution ob = new Solution();
-            System.out.println(ob.kthElement(k, arr1, arr2));
+            System.out.println(ob.kthElement(a, b, k));
+            System.out.println("~");
         }
     }
 }
@@ -36,12 +37,27 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    public long kthElement(int k, int arr1[], int arr2[]) {
+    public int kthElement(int a[], int b[], int k) {
         // code here
-        int[] a = new int[arr1.length + arr2.length];
-        System.arraycopy(arr1, 0, a, 0, arr1.length);
-        System.arraycopy(arr2, 0, a, arr1.length, arr2.length);
-        Arrays.sort(a);
-        return a[k-1];
+        int arr[]=new int[a.length+b.length];
+        int lena=a.length;
+        int lenb=b.length;
+        if(a.length<=0  ){
+            return  0;
+        }
+        if(b.length<=0){
+            return 0;
+        }
+        
+        System.arraycopy(a,0,arr,0,lena);
+        System.arraycopy(b,0,arr,lena,lenb);
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++){
+            if(i==k-1){
+                return arr[i];
+            }
+        }
+        return -1;
     }
 }
+
