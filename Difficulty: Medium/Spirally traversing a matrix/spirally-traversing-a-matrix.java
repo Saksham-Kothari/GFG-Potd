@@ -20,6 +20,8 @@ class GFG {
             ArrayList<Integer> ans = ob.spirallyTraverse(matrix);
             for (Integer val : ans) System.out.print(val + " ");
             System.out.println();
+
+            System.out.println("~");
         }
     }
 }
@@ -27,28 +29,24 @@ class GFG {
 
 
 class Solution {
-    // Function to return a list of integers denoting spiral traversal of matrix.
-    public ArrayList<Integer> spirallyTraverse(int matrix[][]) {
+    public ArrayList<Integer> spirallyTraverse(int mat[][]) {
         // code here
-        ArrayList<Integer> ans=new ArrayList<>();
-        int n=matrix.length;
-        int m=matrix[0].length;
-        int row=0,col=-1;
-        int direction=1;
-        while(n>0&&m>0){
-            for(int i=0;i<m;i++){
-                col+=direction;
-                ans.add(matrix[row][col]);
-            }
-            n--;
-            for(int i=0;i<n;i++){
-                row+=direction;
-                ans.add(matrix[row][col]);
-            }
-            m--;
-            direction*=-1;
-        }
-        return ans;
+        int n = mat.length, m = mat[0].length, total = n * m;
+        int sr = 0, er = n - 1;
+        int sc = 0, ec = m - 1;
+        ArrayList<Integer> list = new ArrayList<>();
         
+        while (list.size() < total) {
+            for (int i = sc; i <= ec && list.size() < total; i++) list.add(mat[sr][i]);
+            sr++;
+            for (int i = sr; i <= er && list.size() < total; i++) list.add(mat[i][ec]);
+            ec--;
+            for (int i = ec; i >= sc && list.size() < total; i--) list.add(mat[er][i]);
+            er--;
+            for (int i = er; i >= sr && list.size() < total; i--) list.add(mat[i][sc]);
+            sc++;
+        }
+        
+        return list;
     }
 }
