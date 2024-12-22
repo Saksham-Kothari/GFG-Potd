@@ -32,13 +32,15 @@ class gfg {
 
 class Solution {
     public static boolean matSearch(int mat[][], int x) {
-        int n=mat.length, m=mat[0].length, row=0, col=m-1;
-
-// if you declare variables individually, it might get stuck at 1010 tc.
-        while(row<n && col>=0){
-            if(mat[row][col]==x) return true;
-            else if(mat[row][col]>x) col--;
-            else row++;
+        int row = mat.length , i = 0 ,j = mat[0].length-1;
+        while(i < row && j>=0){
+            if(mat[i][j] == x){
+                return true;
+            }else if(mat[i][j]>x){
+                j--;
+            }else{
+                i++;
+            }
         }
         return false;
     }
