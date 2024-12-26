@@ -37,7 +37,7 @@ public class Main {
 
 //Back-end complete function Template for Java
 class Solution {
-public void setMatrixZeroes(int[][] mat) {
+    public void setMatrixZeroes(int[][] mat) {
         int rowLength=mat.length;
         int colLength=mat[0].length;
         
@@ -60,5 +60,5 @@ public void setMatrixZeroes(int[][] mat) {
             }
         }
     }
-    
+
 }
