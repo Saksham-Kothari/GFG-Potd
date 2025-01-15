@@ -39,22 +39,23 @@ class Main {
 
 
 class Solution {
-    // Function to find equilibrium point in the array.
     public static int findEquilibrium(int arr[]) {
-        // code here
-        int sum =0;
-        for(int c:arr)
-        sum+=c;
-        int l=0;
-        for(int i=0;i<arr.length;i++){
-            int temp =arr[i];
-            sum-=temp;
-            if(sum==l){
-                return i;
-            }else{
-                l+=temp;
-            }
-        }
-        return -1;
+       //logic is we have to condtion when leftsum==rightsum
+       int totalsum=0;
+       int leftsum=0;
+       int n=arr.length;
+       for(int i=0;i<n;i++){
+           totalsum+=arr[i];
+       }
+       for(int i=0;i<n;i++){
+           //totalsum=leftsum+rightsum
+           //rightsum=totalsum-leftsum
+           totalsum-=arr[i];//leftsum decreasing from totalsum
+           if(leftsum==totalsum){
+               return i;
+           }
+           leftsum+=arr[i]; //updating leftsum index wise
+       }
+      return -1;
     }
 }
